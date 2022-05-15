@@ -1,0 +1,72 @@
+body {
+  display: grid;
+  gap: 7px;
+  grid-template-rows: auto auto;
+  margin: 0;
+  padding: 10px;
+  border: 5px solid lightgray;
+  width: 130px;
+}
+
+#switchStateContainer {
+  display: grid;
+  grid-template-columns: 54% 46%;
+}
+
+.info {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: larger;
+}
+
+#switchState {
+  display: inline-block;
+  vertical-align: middle;
+
+  font-size: large;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+#switch {
+  display: inline-block;
+  vertical-align: middle;
+
+  width: 46px;
+  height: 21px;
+  background-color: lightgray;
+  border-radius: 100px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.4s;
+  box-shadow: 0 0 7px rgb(228, 227, 227);
+}
+
+#switch::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  position: absolute;
+  border-radius: 70px;
+  top: 3px;
+  left: 3px;
+  transition: 0.4s;
+}
+
+input:checked + #switch::after {
+  left: calc(100% - 3px);
+  transform: translateX(-100%);
+}
+
+input:checked + #switch {
+  background-color: gray;
+}
+
+#switch:active::after {
+  width: 17px;
+}

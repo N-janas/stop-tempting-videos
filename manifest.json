@@ -1,0 +1,22 @@
+{
+    "name": "Stop tempting videos",
+    "description": "Extension stopping the display of distracting videos.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": ["storage", "activeTab"],
+    "icons": {
+        "16": "images/icons/ico16.png",
+        "32": "images/icons/ico32.png",
+        "48": "images/icons/ico_a48.png",
+        "128": "images/icons/ico128.png"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon" : {
+            "16": "images/icons/ico16.png",
+            "32": "images/icons/ico32.png",
+            "48": "images/icons/ico48.png",
+            "128": "images/icons/ico128.png"
+        }
+    }
+  }
