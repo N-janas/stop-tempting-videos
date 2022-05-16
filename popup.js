@@ -9,13 +9,13 @@ function initialize(){
     checkbox.addEventListener('click', handleSwitchClick);
     
     chrome.storage.sync.get('extensionEnabled', function(data){
-        setInfoLabelText(data.extensionEnabled);
+        setInfoLabel(data.extensionEnabled);
         checkbox.checked = data.extensionEnabled;
     });
 }
 
 function handleSwitchClick(){
-    setInfoLabelText(this.checked);
+    setInfoLabel(this.checked);
     saveExtensionSettings(this.checked);
 }
 
@@ -23,14 +23,12 @@ function saveExtensionSettings(isEnabled){
     chrome.storage.sync.set({ extensionEnabled: isEnabled});
 }
 
-function setInfoLabelText(isEnabled){
-    const infoLabel = document.getElementById(switchStateId);
-
+function setInfoLabel(isEnabled){
     if (isEnabled) {
-        infoLabel.innerHTML = labelEnabled;
+        document.getElementById(switchStateId).innerHTML = labelEnabled;
     }
     else{
-        infoLabel.innerHTML = labelDisabled;
+        document.getElementById(switchStateId).innerHTML = labelDisabled;
     }
 }
 
