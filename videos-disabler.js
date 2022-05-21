@@ -1,20 +1,19 @@
+const contentsClass = '.style-scope ytd-rich-grid-renderer';
+const contentsId = '#contents';
+const injectStyleContent = '{ display: none }';
+
 chrome.storage.sync.get('extensionEnabled', function(data){
     if(data.extensionEnabled){
-        const observer = new MutationObserver((mutations, obs) => {
-            const mainPageVideosContainer = document.querySelector("#contents");
-        
-            if (mainPageVideosContainer) {
-                console.log("Videos disabled, it's for your own good");
-                
-                mainPageVideosContainer.style.display = 'none';
-                obs.disconnect();
-                return;
-            }
-          });
-          
-          observer.observe(document, {
-            childList: true,
-            subtree: true
-          });
+        const styleSheet = document.styleSheets[1];
+
+        if (styleSheet) {
+          styleSheet.insertRule(`${contentsClass} ${contentsId} ${injectStyleContent}`, 0);
+
+          console.log("Videos are disabled. It's for your own good");          
+        }
+        else
+        {
+          console.log('StyleSheet not found');
+        }
     }
 });
