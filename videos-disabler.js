@@ -1,19 +1,13 @@
-const contentsClass = '.style-scope ytd-rich-grid-renderer';
-const contentsId = '#contents';
-const injectStyleContent = '{ display: none }';
-
 chrome.storage.sync.get('extensionEnabled', function(data){
     if(data.extensionEnabled){
-        const styleSheet = document.styleSheets[1];
+      const disabledVideosStyle = document.createElement('style'); 
 
-        if (styleSheet) {
-          styleSheet.insertRule(`${contentsClass} ${contentsId} ${injectStyleContent}`, 0);
+      disabledVideosStyle.appendChild(
+        document.createTextNode(
+          '.style-scope ytd-rich-grid-renderer #contents { display: none; }'));
 
-          console.log("Videos are disabled. It's for your own good");          
-        }
-        else
-        {
-          console.log('StyleSheet not found');
-        }
+      document.getElementsByTagName("head")[0].appendChild(disabledVideosStyle);
+
+      console.log("Videos are disabled. It's for your own good");
     }
 });
